@@ -117,15 +117,15 @@ Your plugin has been created! Now you can use it in a variety of ways.
     
 ## Options
 
-The following options let you change the names of variables that are utilized by jQuery-Proto. 
-It is recommended that you only change them if you are using a class pattern that interferes 
-with their operation.
+    The following options let you change the names of variables that are utilized 
+    by jQuery-Proto.  It is recommended that you only change them if you are using 
+    a class pattern that interferes with their operation.
 
 ** elem ** (String, required, default "elem")
 
-The name of the public variable assigned to the class on creation, which is a reference 
-to the DOM element context. e.g. If you used $("div#my_select").sb(), this.elem
-would point to &lt;div id="my_select"&gt;&lt;/div&gt;.
+    The name of the public variable assigned to the class on creation, which is a 
+    reference to the DOM element context. e.g. If you used $("div#my_select").sb(), 
+    this.elem would point to &lt;div id="my_select"&gt;&lt;/div&gt;.
 
 ** init ** (String, required, default "init")
 
@@ -133,10 +133,10 @@ The name of your constructor.
 
 ** access ** (String, optional, default "access")
 
-The name of the public function that should be called every time your class 
-is accessed through the jQuery plugin. This function allows you to update 
-internal variables, if necessary, before any public methods are called or 
-public variables are set.
+    The name of the public function that should be called every time your class 
+    is accessed through the jQuery plugin. This function allows you to update 
+    internal variables, if necessary, before any public methods are called or 
+    public variables are set.
 
 
 ## Leveraging [Ben Alman's jQuery getObject plugin](http://benalman.com/projects/jquery-getobject-plugin/)
