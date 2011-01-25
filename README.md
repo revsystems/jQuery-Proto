@@ -125,7 +125,7 @@ with their operation.
 
 The name of the public variable assigned to the class on creation, which is a reference 
 to the DOM element context. e.g. If you used $("div#my_select").sb(), this.elem
-would point to <div id="my_select"></div>.
+would point to &lt;div id="my_select"&gt;&lt;/div&gt;.
 
 ** init ** (String, required, default "init")
 
