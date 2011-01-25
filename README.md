@@ -38,7 +38,7 @@ its public methods and init function.
   
 ## Usage
 
-Requires [jQuery](http://jquery.com) and a plugin you've written! jQuery-Proto is not a stand-alone plugin; 
+Requires [jQuery](http://jquery.com) and something you've created! jQuery-Proto is not standalone; 
 it's meant to be leveraged by other plugins!
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
@@ -61,7 +61,7 @@ Now that you can leverage jQuery-Proto, create a javascript class:
             ...
         }
         
-        // a function that can be called whenever the classoh is accessed via jQuery
+        // a function that can be called whenever the class is accessed via jQuery
         this.access = function(funcName, param) {
             console.log(funcName + " is being executed with a param value of " + param);
             console.log("Now actually execute " + funcName);
@@ -82,6 +82,11 @@ Now that you can leverage jQuery-Proto, create a javascript class:
         };
         
         this.isKindaCool = undefined;
+        
+        this.destroy = function() {
+            $sb.remove();
+            $(this.elem).removeData("sb");
+        };
         
     }
     
@@ -106,18 +111,15 @@ Your plugin has been created! Now you can use it in a variety of ways.
     // get a public variable
     console.log($("select").sb("isKindaCool"));
     
+    // destroy and unlink sb
+    $("select").sb("destroy");
+    
     
 ## Options
 
 The following options let you change the names of variables that are utilized by jQuery-Proto. 
 It is recommended that you only change them if you are using a class pattern that interferes 
 with their operation.
-
-** id ** (String, required, default "id")
-
-The name of the public variable assigned to the class on creation denoting a unique ID. 
-If you need to remove your plugin from an object, you should call 
-$(this.elem).removeData(this.id) in your destructor.
 
 ** elem ** (String, required, default "elem")
 
