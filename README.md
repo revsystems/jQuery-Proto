@@ -18,24 +18,24 @@ You can also see [a new plugin called jQuery-Bounds utilizing it](http://dl.drop
 
 ## Features
 
-* Makes your plugin's API easier to use
+* Makes your plugin's API slicker and easier to use
 * Saves you filesize and time when you make a new plugin
-* Works with the function-as-class model
+* Works with the prototype model
 * Works with [John Resig's Simple Javascript Inheritance](http://ejohn.org/blog/simple-javascript-inheritance/) model
 * Leverages [Ben Alman's jQuery getObject plugin](http://benalman.com/projects/jquery-getobject-plugin/) if it's available
 
 
 ## Compatibility
 
-  jQuery-Proto has been tested in the following browsers:
-  
-  * Firefox 3.6.12
-  * Google Chrome 7.0.517.44
-  * IE7 (via IE9 beta)
-  * IE8 (via IE9 beta)
-  * IE9 beta
-  
-  It requires [jQuery version 1.3.x](http://jquery.com) and up.
+jQuery-Proto has been tested in the following browsers:
+
+* Firefox 3.6.12
+* Google Chrome 7.0.517.44
+* IE7 (via IE9 beta)
+* IE8 (via IE9 beta)
+* IE9 beta
+
+It requires [jQuery version 1.3.x](http://jquery.com) and up.
 
   
 ## Usage
@@ -63,13 +63,13 @@ Now that you can leverage jQuery-Proto, create a javascript class:
             ...
         }
         
-        // a function that can be called whenever the class is accessed via jQuery
+        // a function that is called whenever the class is accessed via jQuery
         this.access = function(funcName, param) {
             console.log(funcName + " is being executed with a param value of " + param);
             console.log("Now actually execute " + funcName);
         };
         
-        // private internal function
+        // private function
         function myUtility() {
             ...
         }
