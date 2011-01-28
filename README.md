@@ -228,5 +228,5 @@ first invocation.
 
 jQuery-Proto identifies the Simple Class Inheritance pattern by the existence of the
 _super property on the object. So if you run into unexpected behavior or you're using a class pattern I 
-haven't seen, you may have problems. If you do, let me know! Maybe I can modify jQuery-Proto 
-so it works for you.
+haven't seen, you may have problems. If you do, [let me know](https://github.com/revsystems/jQuery-Proto/issues)!
+Maybe I can modify jQuery-Proto so it works for you.
