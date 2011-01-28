@@ -162,7 +162,7 @@ We can do things like:
     console.log($("select").sb("a.very.deep.set.option"));
 
     
-## Using the [John Resig's Simple Javascript Inheritance](http://ejohn.org/blog/simple-javascript-inheritance/) framework
+## Using [John Resig's Simple Javascript Inheritance](http://ejohn.org/blog/simple-javascript-inheritance/) framework
 
 Classes are always functions, but frameworks like Simple Javascript Inheritance or Prototype.js 
 create them from the more generic javascript Object {}. jQuery-Proto works with this pattern.
