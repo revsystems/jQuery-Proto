@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta http-equiv="content-type"  content="text/html;charset=UTF-8" />
+  <title>jQuery-Proto Demo: jQuery-Bounds</title>
+  <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <script type="text/javascript" src="jquery.proto.js"></script>
+  <script type="text/javascript" src="jquery.bounds.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $("[name=top]").val($("#example").bounds("top"));
+    $("[name=right]").val($("#example").bounds("right"));
+    $("[name=bottom]").val($("#example").bounds("bottom"));
+    $("[name=left]").val($("#example").bounds("left"));
+    
+    $("input").keyup(function() {
+      $("#example").bounds("rect", {
+        top: $("[name=top]").val(),
+        right: $("[name=right]").val(),
+        bottom: $("[name=bottom]").val(),
+        left: $("[name=left]").val(),
+      });
+    });
+  });
+  </script>
+  <!--[if IE]>
+  <link rel="stylesheet" type="text/css" href="ie.css" />
+  <![endif]-->
+  <style type="text/css">
+  #context{background:gray;height:300px;margin-top:50px;padding-top:50px;}
+  #local{background:lightblue;height:100px;margin-left:50px;position:relative;}
+  #example{background:red;height:50px;left:0;position:absolute;top:0;width:50px;}
+  
+  label{margin-right:20px;}
+  input{width:60px;}
+  </style>
+</head>
+<body>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="outer_container">
+  <div class="inner_container">
+    
+    <p>The "bounds" plugin allows you to control an element without specifying width/height, and lets you get the bounds of an element within a context.</p>
+    
+    <p>Change coordinates to manipulate the bounds of the red box.</p>
+    <form action="." method="get">
+      <label>Top: <input type="text" name="top" /></label>
+      <label>Right: <input type="text" name="right" /></label>
+      <label>Bottom: <input type="text" name="bottom" /></label>
+      <label>Left: <input type="text" name="left" /></label>
+    </form>
+    <div id="context">
+      <div id="local">
+        <div id="example">
+          blah
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+</body>
+</html>

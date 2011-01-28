@@ -80,12 +80,14 @@ Please see the accompanying LICENSE.txt for licensing information.
         var name = arguments[0],    // The name of the jQuery function that will be called
             clazz = arguments[1],   // A reference to the class that you are associating
             klazz = clazz,          // A version of clazz with a delayed constructor
-            extOpt = {};            // used to extend clazz with a variable name for the init function
+            extOpt = {},            // used to extend clazz with a variable name for the init function
+            undefined;              // safety net
         
         opts = $.extend({
-            elem: "elem",
-            access: "access",
-            init: "init"
+            elem: "elem",           // the property name on the object that will be set to the current jQuery context
+            access: "access",       // the name of the access function to be set on the object
+            init: "init",           // the name of the init function to be set on the object
+            instantAccess: false    // when true, treat all args as access args (ignore constructor args) and allow construct/function call at the same time
         }, arguments[2]);
         
         if(clazz._super) {
@@ -97,12 +99,12 @@ Please see the accompanying LICENSE.txt for licensing information.
             var result, args = arguments;
                 
             $(this).each(function() {
-                var res,
-                    $e = $(this),
-                    obj = $e.data(name);
+                var $e = $(this),
+                    obj = $e.data(name),
+                    isNew = !obj;
                 
-                // if the object is not defined for this element
-                if(obj === undefined) {
+                // if the object is not defined for this element, then construct
+                if(isNew) {
                     
                     // create the new object and restore init if necessary
                     obj = new klazz();
@@ -113,13 +115,16 @@ Please see the accompanying LICENSE.txt for licensing information.
                     // set the elem property and initialize the object
                     obj[opts.elem] = $e[0];
                     if(obj[opts.init]) {
-                        obj[opts.init].apply(obj, aps.call(args, 0));
+                        obj[opts.init].apply(obj, opts.instantAccess ? [] : aps.call(args, 0));
                     }
                     
                     // associate it with the element
                     $e.data(name, obj);
                     
-                } else {
+                }
+                
+                // if it is defined or we allow instant access, then access
+                if(!isNew || opts.instantAccess) {
                   
                     // call the access function if it exists (allows lazy loading)
                     if(obj[opts.access]) {
@@ -132,8 +137,7 @@ Please see the accompanying LICENSE.txt for licensing information.
                         if($.isFunction(obj[args[0]])) {
                         
                             // use the method access interface
-                            res = obj[args[0]].apply(obj, aps.call(args, 1));
-                            result = res;
+                            result = obj[args[0]].apply(obj, aps.call(args, 1));
                             
                         } else if(args.length === 1) {
                           
@@ -165,7 +169,7 @@ Please see the accompanying LICENSE.txt for licensing information.
             });
             
             // chain if no results were returned from the clazz's method (it's a setter)
-            if(result !== undefined) {
+            if(result === undefined) {
               return $(this);
             }
             

@@ -13,6 +13,8 @@ with sweet and sugary jQuery syntax.
 jQuery-Proto. If you scroll to the bottom of jquery.sb.js, you'll see 
 its public methods and init function.
 
+You can also see [a new plugin called jQuery-Bounds utilizing it](http://dl.dropbox.com/u/124192/websites/jqueryproto/bounds.html).
+
 
 ## Features
 
@@ -137,6 +139,12 @@ The name of your constructor.
     is accessed through the jQuery plugin. This function allows you to update 
     internal variables, if necessary, before any public methods are called or 
     public variables are set.
+    
+** instantAccess ** (boolean, default false)
+
+    When set to true, it is assumed the constructor has no arguments. This lets us 
+    treat the first call as both a constructor and an access. jQuery-Bounds (in the demo)
+    uses this. We can call `$("target").bounds("left")` instead of `$("target").bounds().bounds("left")`.
 
 
 ## Leveraging [Ben Alman's jQuery getObject plugin](http://benalman.com/projects/jquery-getobject-plugin/)
@@ -197,6 +205,9 @@ clunky and complicated (the context changes often with jQuery), and users can re
 that should be private, like $("select").sb("myUtility"). 
 
 Nevertheless, users may find the inheritance pattern useful, so support is included.
+
+In either case, if better performance is needed, then you should try to reduce the use of closures 
+and assign member functions to the prototype.
 
 
 ## Troubleshooting
