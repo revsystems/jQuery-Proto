@@ -199,7 +199,7 @@ create them from the more generic javascript Object {}. jQuery-Proto works with 
         
     });
     
-Personally, I prefer using the function-as-class pattern (explained in the Usage section) because 
+Personally, I prefer using the prototype pattern (explained in the Usage section) because 
 it lets you specify local variables. As you can see above, constantly repeating "this" can get 
 clunky and complicated (the context changes often with jQuery), and users can reference functions 
 that should be private, like $("select").sb("myUtility"). 
