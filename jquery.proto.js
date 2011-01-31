@@ -74,7 +74,7 @@ Please see the accompanying LICENSE.txt for licensing information.
     
 */
 
-(function(jQuery) {
+(function( $ ) {
     var aps = Array.prototype.slice;
     $.proto = function() {
         var name = arguments[0],    // The name of the jQuery function that will be called
@@ -178,4 +178,4 @@ Please see the accompanying LICENSE.txt for licensing information.
         };
     };
     
-}($));
+}(jQuery));
