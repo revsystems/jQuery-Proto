@@ -218,7 +218,7 @@ Models like Javascript Simple Inheritance create a class in the following form:
         function init( options ) {
             // initialization magic here...
         }
-        init.apply(this, options);
+        init.apply(this, arguments);
     }
 
 This presents a problem for jQuery-Proto because it calls new MyClass(), then applies 
